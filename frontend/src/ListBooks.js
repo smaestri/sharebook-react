@@ -1,6 +1,9 @@
 import React from 'react'
 import Book from './Book'
 
+import './MyBooks.scss'
+import './ListBooks.scss'
+
 export default class ListBooks extends React.Component {
 
   constructor() {
@@ -26,15 +29,15 @@ export default class ListBooks extends React.Component {
 
   render() {
 
-    return (<div>
+    return (<div >
       <h1>Livres diponibles</h1>
-      {this.state.books.length === 0 ? "Pas de livres disponibles" : null}
-      {this.state.books.map(book => (<div>
-        <Book title={book.title} category={book.category}></Book>
-        <button>Emprunter</button>
-      </div>))}
-      <br />
-      <button>Nouveau livre</button>
+      <div className="list-container">
+        {this.state.books.length === 0 ? "Pas de livres disponibles" : null}
+        {this.state.books.map(book => (<div className="list-book-container">
+          <Book title={book.title} category={book.category}></Book>
+          <button className="btn btn-primary btn-sm">Emprunter</button>
+        </div>))}
+      </div>
     </div>)
 
   }
