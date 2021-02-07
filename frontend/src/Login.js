@@ -1,7 +1,8 @@
 import React from 'react'
-import axios from 'axios';
-import logo from './logo.jpg';
+import axios from 'axios'
 import { Link, withRouter } from "react-router-dom";
+import logo from './logo.jpg';
+import SimpleModal from './SimpleModal'
 import './Login.scss'
 
 class Login extends React.Component {
@@ -28,6 +29,8 @@ class Login extends React.Component {
         }).then((response) => {
             this.props.setUserInfo(response.data.userName)
             this.props.history.push('/listbooks')
+        }).catch(()=> {
+            this.setState({showModal : true})
         })
     }
 
@@ -36,7 +39,11 @@ class Login extends React.Component {
     }
 
     render() {
+        const title = "Login incorrect";
+        const bodyTxt = "Votre Login ou mot de passe est incorrect"
+        
         return (
+            <>
             <div className="login-container">
                 <div>
                     <div>
@@ -59,6 +66,8 @@ class Login extends React.Component {
                     <div className="text-center"><Link to="/addUser">M'inscrire</Link></div>
                 </div>
             </div>
+           <SimpleModal title={title} bodyTxt={bodyTxt} handleCloseModal={this.handleCloseModal} showModal={this.state.showModal} />
+          </>
         )
     }
 }

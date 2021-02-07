@@ -5,7 +5,6 @@ import Book from './Book'
 import './MyBooks.scss'
 import './ListBooks.scss'
 
-
 class ListBooks extends React.Component {
 
   constructor() {
