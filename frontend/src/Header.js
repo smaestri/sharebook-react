@@ -1,6 +1,16 @@
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import axios from 'axios'
 
-export default function Header() {
+export default function Header({userInfo, setUserInfo}) {
+    const history = useHistory();
+    
+    const signout = () => {
+        axios.post('/logout').then(response => {
+            history.push('/login')
+            setUserInfo(null)
+        })
+    }
+    
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -20,12 +30,9 @@ export default function Header() {
                         <Link className="nav-link" to="/listBooks">Livres disponibles</Link>
                     </li>
                 </ul>
-                <div>Bienvenue, ...</div>
-                <button variant="secondary">Se déconnecter</button>
+                <div>Bienvenue, {userInfo}</div>
+                <button variant="secondary" onClick={signout}>Se déconnecter</button>
             </div>
         </nav>
-
-
-
     )
 }
