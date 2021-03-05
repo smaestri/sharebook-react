@@ -5,7 +5,7 @@ export default function Header({userInfo, setUserInfo}) {
     const history = useHistory();
     
     const signout = () => {
-        axios.post('/logout').then(response => {
+        axios.post(process.env.REACT_APP_LOGOUT_ENDPOINT).then(response => {
             history.push('/login')
             setUserInfo(null)
         })

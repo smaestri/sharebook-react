@@ -23,7 +23,7 @@ class Login extends React.Component {
 
     onSubmit (event) {
         event.preventDefault();
-        axios.post('/authenticate', {
+        axios.post(process.env.REACT_APP_LOGIN_ENDPOINT, {
             email: this.state.userData.email,
             password: this.state.userData.password
         }).then((response) => {

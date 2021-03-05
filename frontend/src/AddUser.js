@@ -24,7 +24,7 @@ class AddUser extends React.Component {
 
   onSubmit = (event) => {
     event.preventDefault();
-    axios.post('/users', {
+    axios.post(process.Env.REACT_APP_USERS_ENDPOINT, {
       ...this.state.userData
     }).then(response => {
       this.props.setUserInfo(response.data.firstName + " " + response.data.lastName);

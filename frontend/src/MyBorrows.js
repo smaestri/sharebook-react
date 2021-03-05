@@ -9,7 +9,7 @@ export default function MyBorrows() {
 
 
     const getMyBorrows = () => {
-        axios.get('/borrows').then(response => {
+        axios.get(process.env.REACT_APP_BORROWS_ENDPOINT).then(response => {
             setMyBorrows(response.data)
            })
     }
@@ -19,7 +19,7 @@ export default function MyBorrows() {
     },[])
 
     const closeBorrow = (borrowId) => {
-        axios.delete(`/borrows/${borrowId}`).then(response => {
+        axios.delete(`${process.env.REACT_APP_BORROWS_ENDPOINT}/${borrowId}`).then(response => {
             getMyBorrows();
            })
     }

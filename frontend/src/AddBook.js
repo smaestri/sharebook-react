@@ -12,7 +12,7 @@ export default function AddBook() {
     const history = useHistory();
 
     useEffect(() => {
-        axios.get('/categories').then(response => {
+        axios.get(process.env.REACT_APP_CATEGORIES_ENDPOINT).then(response => {
             setCategoriesData(response.data)
             setBookData({
                 title: '',
@@ -22,7 +22,7 @@ export default function AddBook() {
         })
             .then(() => {
                 if (bookId) {
-                    axios.get(`/books/${bookId}`).then(response => {
+                    axios.get(`${process.env.REACT_APP_BOOKS_ENDPOINT}/${bookId}`).then(response => {
                         setBookData({
                             title: response.data.title,
                             categoryId: response.data.category.id
@@ -43,7 +43,7 @@ export default function AddBook() {
     const onSubmit = (event) => {
         if (bookId) {
             event.preventDefault();
-            axios.put(`/books/${bookId}`, {
+            axios.put(`${process.env.REACT_APP_BOOKS_ENDPOINT}/${bookId}`, {
                 ...bookData
             }).then(() => {
                 //rediriger vers myBooks
@@ -51,7 +51,7 @@ export default function AddBook() {
             })
         } else {
             event.preventDefault();
-            axios.post('/books', {
+            axios.post(process.env.REACT_APP_BOOKS_ENDPOINT, {
                 ...bookData
             }).then(() => {
                 //rediriger vers myBooks

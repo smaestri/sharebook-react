@@ -15,13 +15,13 @@ class ListBooks extends React.Component {
   }
 
   componentDidMount() {
-   axios.get('/books?status=FREE').then(response => {
+   axios.get(`${process.env.REACT_APP_BOOKS_ENDPOINT}?status=FREE`).then(response => {
      this.setState({books: response.data})
    })
   }
 
   borrowBook(bookId) {
-    axios.post(`/borrows/${bookId}`, {}).then(()=> {
+    axios.post(`${process.env.REACT_APP_BORROWS_ENDPOINT}/${bookId}`, {}).then(()=> {
       this.props.history.push('/myBorrows')
     })
   }

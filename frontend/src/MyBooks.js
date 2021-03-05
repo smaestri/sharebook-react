@@ -11,7 +11,7 @@ const MyBooks = () => {
   const [showModal, setShowModal] = React.useState(false)
 
   const fetchBooks = () => {
-    axios.get('/books').then(response => {
+    axios.get(process.Env.REACT_APP_BOOKS_ENDPOINT).then(response => {
       setMyBooks(response.data)
     })
   }
@@ -21,7 +21,7 @@ const MyBooks = () => {
   }, [])
 
   const handleDelete = (bookId) => {
-    axios.delete(`/books/${bookId}`).then(response => {
+    axios.delete(`${process.env.REACT_APP_BOOKS_ENDPOINT}/${bookId}`).then(response => {
       fetchBooks();
     }).catch(error => {
       setShowModal(true)
