@@ -1,3 +1,0 @@
-- Install vs code extension https://docs.microsoft.com/fr-fr/azure/azure-functions/functions-develop-vs-code?tabs=csharp#generated-project-files
-- Install azure function core tools https://docs.microsoft.com/fr-fr/azure/azure-functions/functions-run-local?tabs=linux%2Ccsharp%2Cbash
-- F5  pour executer function
